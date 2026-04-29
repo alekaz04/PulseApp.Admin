@@ -2,11 +2,15 @@ import { useState, useCallback } from 'react';
 import { ToastContainer } from './Toast.jsx';
 import { ComplimentsTab } from './ComplimentsTab.jsx';
 import { ActionsTab } from './ActionsTab.jsx';
+import { SubscriptionsTab } from './SubscriptionsTab.jsx';
+import { HealthTab } from './HealthTab.jsx';
 import './DashboardLayout.css';
 
 const TABS = [
   { id: 'compliments', label: 'Комплименты' },
   { id: 'actions', label: 'Действия' },
+  { id: 'subscriptions', label: 'Подписки' },
+  { id: 'health', label: 'Здоровье' },
 ];
 
 export function DashboardLayout({ onLogout }) {
@@ -45,6 +49,8 @@ export function DashboardLayout({ onLogout }) {
       <main className="dashboard-content">
         {activeTab === 'compliments' && <ComplimentsTab addToast={addToast} />}
         {activeTab === 'actions' && <ActionsTab addToast={addToast} />}
+        {activeTab === 'subscriptions' && <SubscriptionsTab addToast={addToast} />}
+        {activeTab === 'health' && <HealthTab />}
       </main>
 
       <ToastContainer toasts={toasts} onRemove={removeToast} />

@@ -1,0 +1,108 @@
+.subscriptions-tab {}
+
+.subscriptions-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.subscriptions-header h2 {
+  margin: 0;
+  font-size: 1.1rem;
+  color: #333;
+}
+
+.refresh-btn {
+  padding: 7px 16px;
+  background: #f5f5f5;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #555;
+}
+
+.refresh-btn:hover:not(:disabled) {
+  background: #ebebeb;
+}
+
+.refresh-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.subscriptions-count {
+  font-size: 0.85rem;
+  color: #888;
+}
+
+.subscriptions-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+}
+
+.subscriptions-table th {
+  text-align: left;
+  padding: 12px 14px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  background: #fafafa;
+  border-bottom: 1px solid #eee;
+}
+
+.subscriptions-table td {
+  padding: 11px 14px;
+  font-size: 0.875rem;
+  color: #444;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.subscriptions-table tr:last-child td {
+  border-bottom: none;
+}
+
+.endpoint-cell {
+  font-family: monospace;
+  font-size: 0.8rem;
+  color: #555;
+  max-width: 300px;
+  word-break: break-all;
+}
+
+.badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.badge-active {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+
+.badge-inactive {
+  background: #fce4ec;
+  color: #c62828;
+}
+
+.tab-loading {
+  padding: 40px;
+  text-align: center;
+  color: #888;
+}
+
+.empty-state-row td {
+  text-align: center;
+  padding: 32px;
+  color: #aaa;
+}

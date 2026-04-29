@@ -1,0 +1,100 @@
+.health-tab {
+  max-width: 500px;
+}
+
+.health-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.health-header h2 {
+  margin: 0;
+  font-size: 1.1rem;
+  color: #333;
+}
+
+.health-refresh-btn {
+  padding: 7px 16px;
+  background: #f5f5f5;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #555;
+}
+
+.health-refresh-btn:hover:not(:disabled) {
+  background: #ebebeb;
+}
+
+.health-refresh-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.health-card {
+  background: white;
+  border-radius: 8px;
+  padding: 20px 24px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+}
+
+.health-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid #f0f0f0;
+  font-size: 0.9rem;
+}
+
+.health-row:last-child {
+  border-bottom: none;
+}
+
+.health-label {
+  color: #555;
+  font-weight: 500;
+}
+
+.health-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 14px;
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.health-badge::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.badge-ok {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+
+.badge-degraded {
+  background: #fff3e0;
+  color: #e65100;
+}
+
+.badge-error {
+  background: #fce4ec;
+  color: #c62828;
+}
+
+.health-last-check {
+  margin-top: 14px;
+  font-size: 0.78rem;
+  color: #aaa;
+  text-align: right;
+}

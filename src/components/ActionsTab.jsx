@@ -1,14 +1,15 @@
 import { useState } from 'react';
-import { sendPushToAll } from '../api/admin.js';
+import { sendPushToAll, resetComplimentPool } from '../api/admin.js';
 import './ActionsTab.css';
 
 export function ActionsTab({ addToast }) {
   const [form, setForm] = useState({ title: '', body: '' });
-  const [loading, setLoading] = useState(false);
+  const [pushLoading, setPushLoading] = useState(false);
+  const [resetLoading, setResetLoading] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true);
+    setPushLoading(true);
     try {
       const result = await sendPushToAll({ title: form.title, body: form.body });
       addToast(
@@ -19,7 +20,20 @@ export function ActionsTab({ addToast }) {
     } catch (err) {
       addToast(`Ошибка отправки: ${err.message}`, 'error');
     } finally {
-      setLoading(false);
+      setPushLoading(false);
+    }
+  };
+
+  const handleResetPool = async () => {
+    if (!confirm('Сбросить пул? Все комплименты снова станут доступны для отправки.')) return;
+    setResetLoading(true);
+    try {
+      const count = await resetComplimentPool();
+      addToast(`Пул сброшен: ${count} комплимент(ов) снова доступно`, 'success');
+    } catch (err) {
+      addToast(`Ошибка сброса пула: ${err.message}`, 'error');
+    } finally {
+      setResetLoading(false);
     }
   };
 
@@ -44,10 +58,24 @@ export function ActionsTab({ addToast }) {
           placeholder="Текст push-уведомления..."
           required
         />
-        <button type="submit" className="push-submit-btn" disabled={loading}>
-          {loading ? 'Отправка...' : 'Отправить всем'}
+        <button type="submit" className="push-submit-btn" disabled={pushLoading}>
+          {pushLoading ? 'Отправка...' : 'Отправить всем'}
         </button>
       </form>
+
+      <div className="reset-pool-card">
+        <div className="reset-pool-info">
+          <strong>Сбросить пул комплиментов</strong>
+          <p>Снимает флаг «уже отправлен» со всех комплиментов — они снова войдут в ротацию.</p>
+        </div>
+        <button
+          className="reset-pool-btn"
+          onClick={handleResetPool}
+          disabled={resetLoading}
+        >
+          {resetLoading ? 'Сброс...' : 'Сбросить пул'}
+        </button>
+      </div>
     </div>
   );
 }

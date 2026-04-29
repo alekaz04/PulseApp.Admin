@@ -11,5 +11,10 @@ export default defineConfig({
   test: {
     environment: 'jsdom',
     globals: true,
+    environmentOptions: {
+      jsdom: {
+        resources: 'usable',
+      },
+    },
   },
 });
