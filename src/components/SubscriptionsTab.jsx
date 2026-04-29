@@ -49,7 +49,10 @@ export function SubscriptionsTab({ addToast }) {
       <table className="subscriptions-table">
         <thead>
           <tr>
+            <th>Id</th>
             <th>Endpoint</th>
+            <th>P256dh</th>
+            <th>Auth</th>
             <th>User Agent</th>
             <th>Создана</th>
             <th>Статус</th>
@@ -58,13 +61,22 @@ export function SubscriptionsTab({ addToast }) {
         <tbody>
           {subscriptions.length === 0 && (
             <tr className="empty-state-row">
-              <td colSpan={4}>Подписок нет</td>
+              <td colSpan={7}>Подписок нет</td>
             </tr>
           )}
           {subscriptions.map((s) => (
             <tr key={s.id}>
+              <td className="key-cell" title={s.id}>
+                {truncate(s.id, 8)}…
+              </td>
               <td className="endpoint-cell" title={s.endpoint}>
                 {truncate(s.endpoint)}
+              </td>
+              <td className="key-cell" title={s.p256dh}>
+                {truncate(s.p256dh, 20)}
+              </td>
+              <td className="key-cell" title={s.auth}>
+                {truncate(s.auth, 20)}
               </td>
               <td>{s.userAgent ?? '—'}</td>
               <td>{formatDate(s.createdAt)}</td>

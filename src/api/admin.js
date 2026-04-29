@@ -11,7 +11,7 @@ export const sendPushToAll = (request) =>
   });
 
 /**
- * @returns {Promise<Array<{ id: string, endpoint: string, isActive: boolean, createdAt: string, userAgent: string|null }>>}
+ * @returns {Promise<Array<{ id: string, endpoint: string, p256dh: string, auth: string, createdAt: string, userAgent: string|null, isActive: boolean }>>}
  */
 export const getSubscriptions = () =>
   apiFetch('/api/admin/all');

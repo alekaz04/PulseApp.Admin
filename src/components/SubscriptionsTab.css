@@ -77,6 +77,16 @@
   word-break: break-all;
 }
 
+.key-cell {
+  font-family: monospace;
+  font-size: 0.8rem;
+  color: #555;
+  max-width: 160px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .badge {
   display: inline-block;
   padding: 2px 8px;

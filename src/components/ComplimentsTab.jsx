@@ -24,6 +24,7 @@ export function ComplimentsTab({ addToast }) {
   const [batchJson, setBatchJson] = useState('');
 
   const loadCompliments = useCallback(async () => {
+    setLoading(true);
     try {
       const data = await getCompliments();
       setCompliments(data);
@@ -104,13 +105,19 @@ export function ComplimentsTab({ addToast }) {
     }
   };
 
-  if (loading) {
-    return <div className="tab-loading">Загрузка...</div>;
-  }
-
   return (
     <div className="compliments-tab">
-      <table className="compliments-table">
+      <div className="compliments-header">
+        <h2>Комплименты</h2>
+        <button className="refresh-btn" onClick={loadCompliments} disabled={loading}>
+          Обновить
+        </button>
+        <span className="compliments-count">{compliments.length} шт.</span>
+      </div>
+
+      {loading && <div className="tab-loading">Загрузка...</div>}
+
+      {!loading && <table className="compliments-table">
         <thead>
           <tr>
             <th>Заголовок</th>
@@ -186,7 +193,7 @@ export function ComplimentsTab({ addToast }) {
             )
           )}
         </tbody>
-      </table>
+      </table>}
 
       <section className="create-form">
         <h3>Добавить комплимент</h3>
